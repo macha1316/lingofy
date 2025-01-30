@@ -1,23 +1,12 @@
+import useIndexContainer from "@/src/container";
+import { router } from "expo-router";
 import { useEffect, useState } from "react";
-import { View, ActivityIndicator } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import AuthNavigator from "../src/navigation/AuthNavigator";
-import AppNavigator from "../src/navigation/AppNavigator";
+import { View, Text, ActivityIndicator } from "react-native";
 
 // のちにAPI経由でログイン状態を取得する処理の追加
-export default function index() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+export default function Index() {
+  const { isLoading } = useIndexContainer();
 
-  useEffect(() => {
-    async function checkAuth() {
-      setIsLoggedIn(true);
-      setIsLoading(false);
-    }
-    checkAuth();
-  }, []);
-
-  // ローディング中はローディング画面を表示
   if (isLoading) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -25,11 +14,4 @@ export default function index() {
       </View>
     );
   }
-
-  //   ログイン状態によって表示する画面を切り替える
-  return (
-    <NavigationContainer>
-      {isLoggedIn ? <AppNavigator /> : <AuthNavigator />}
-    </NavigationContainer>
-  );
 }
