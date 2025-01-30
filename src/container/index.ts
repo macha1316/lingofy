@@ -3,17 +3,20 @@ import { useEffect, useState } from "react";
 
 // のちにAPI経由でログイン状態を取得する処理の追加
 export default function useIndexContainer() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   useEffect(() => {
-    if (!isLoading) {
-      if (isLoggedIn) {
-        router.replace("/home");
-      } else {
-        router.replace("/auth/login");
+    // requestAnimationFrameを使って、画面遷移を遅延させる(最適出ないかも)
+    requestAnimationFrame(() => {
+      if (!isLoading) {
+        if (isLoggedIn) {
+          router.replace("/home");
+        } else {
+          router.replace("/auth/login");
+        }
       }
-    }
+    });
   }, [isLoading, isLoggedIn]);
 
   return {
