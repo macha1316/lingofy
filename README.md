@@ -8,4 +8,4 @@
 
 ## 制作中画面
 
-![制作中画面](assets/images/IMG_1726.PNG)
+<img src="assets/images/IMG_1726.PNG" width="300">
