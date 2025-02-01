@@ -1,6 +1,6 @@
 module.exports = {
   env: {
-    browser: false, // React Native はブラウザ環境ではない
+    browser: false,
     es2021: true,
     node: true,
   },
@@ -11,17 +11,26 @@ module.exports = {
       jsx: true,
     },
   },
+  settings: {
+    react: {
+      version: "detect",
+    },
+  },
   extends: [
     "eslint:recommended",
+    "plugin:react/recommended",
     "plugin:react-hooks/recommended",
-    "plugin:react-native/all", // React Native 向けの推奨ルール
+    "plugin:react-native/all",
   ],
-  plugins: ["react-hooks", "react-native"],
+  plugins: ["react", "react-hooks", "react-native"],
   rules: {
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
-    "react-native/no-inline-styles": "warn", // インラインスタイルを警告
-    "react-native/no-unused-styles": "warn", // 使われていないスタイルを警告
-    "react-native/no-color-literals": "warn", // 直接色を指定するのを警告
+    "react-hooks/exhaustive-deps": [
+      "warn",
+      { additionalHooks: "(useRecoilCallback|useCustomHook)" },
+    ],
+    "react-native/no-inline-styles": "warn",
+    "react-native/no-unused-styles": "warn",
+    "react-native/no-color-literals": "warn",
   },
 };
