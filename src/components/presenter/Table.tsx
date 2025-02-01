@@ -16,7 +16,7 @@ const data = [
   { id: 3, name: "チャプター 3" },
 ];
 
-export default function Table() {
+const Table = () => {
   const { open, toggleTable } = useTable();
 
   return (
@@ -47,7 +47,9 @@ export default function Table() {
       ) : null}
     </DataTable>
   );
-}
+};
+
+export default Table;
 
 const styles = StyleSheet.create({
   header: {
