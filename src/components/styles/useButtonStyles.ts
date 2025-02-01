@@ -6,7 +6,7 @@ export const useButtonStyles = (isIcon: boolean, customStyle?: object) => {
     const baseStyle = StyleSheet.create({
       button: {
         backgroundColor: isIcon ? "" : "#007BFF",
-        padding: 5,
+        padding: 10,
         borderRadius: 5,
         alignItems: "center",
       },

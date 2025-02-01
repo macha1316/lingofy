@@ -1,25 +1,35 @@
 import React from "react";
-import { StyleSheet, TextInput } from "react-native";
+import { StyleSheet, Text, TextInput, View } from "react-native";
 
 interface Props {
   placeHolder: string;
+  topText?: string;
 }
 
-const TextBox = ({ placeHolder }: Props) => {
-  const [text, setText] = React.useState("");
+const TextBox = ({ placeHolder, topText }: Props) => {
+  const [inputText, setText] = React.useState("");
 
   return (
-    <TextInput
-      style={styles.textBox}
-      onChangeText={setText}
-      value={text}
-      placeholder={placeHolder}
-      placeholderTextColor="gray"
-    />
+    <View>
+      {topText === undefined ? null : (
+        <Text style={styles.topText}>{topText}</Text>
+      )}
+      <TextInput
+        style={styles.textBox}
+        onChangeText={setText}
+        value={inputText}
+        placeholder={placeHolder}
+        placeholderTextColor="gray"
+      />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  topText: {
+    color: "gray",
+    marginBottom: 5,
+  },
   textBox: {
     height: 40,
     borderColor: "gray",

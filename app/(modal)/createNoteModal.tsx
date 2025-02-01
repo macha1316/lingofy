@@ -6,8 +6,11 @@ import { StyleSheet, Text, View } from "react-native";
 const createNoteModal = () => {
   return (
     <View style={styles.container}>
-      <Text style={{ fontSize: 15 }}>🗒️ ノートの作成</Text>
-      <TextBox placeHolder="ノート名" />
+      <Text style={{ fontSize: 15, fontWeight: "bold", marginBottom: 20 }}>
+        🗒️ ノート作成
+      </Text>
+      <TextBox placeHolder="タグ選択" topText="🏷️ タグの選択または作成" />
+      <TextBox placeHolder="ノート名" topText="🗒️ 新規ノート名の入力" />
       <Button text="作成する" onPress={() => {}} />
     </View>
   );
