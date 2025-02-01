@@ -1,4 +1,4 @@
-import useIndexContainer from "@/src/container";
+import useIndexContainer from "@/src/container/useIndexContainer";
 import { ActivityIndicator, View } from "react-native";
 
 // のちにAPI経由でログイン状態を取得する処理の追加
