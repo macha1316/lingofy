@@ -11,7 +11,7 @@ export default function useIndexContainer() {
     requestAnimationFrame(() => {
       if (!isLoading) {
         if (isLoggedIn) {
-          router.replace("/home");
+          router.replace("/home/main");
         } else {
           router.replace("/auth/login");
         }
