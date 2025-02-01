@@ -7,7 +7,7 @@ export default function useIndexContainer() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   useEffect(() => {
-    // requestAnimationFrameを使って、画面遷移を遅延させる(最適出ないかも)
+    // requestAnimationFrameを使って、画面遷移を遅延させる(最適でないかも)
     requestAnimationFrame(() => {
       if (!isLoading) {
         if (isLoggedIn) {
