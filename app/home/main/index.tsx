@@ -1,8 +1,11 @@
+import { useModal } from "@/src/components/container/useModal";
 import Button from "@/src/components/presenter/Button";
 import Table from "@/src/components/presenter/Table";
 import { ScrollView, StyleSheet, View } from "react-native";
 
 export default function Index() {
+  const { openModal } = useModal("/(modal)/createNoteModal");
+
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
@@ -14,7 +17,7 @@ export default function Index() {
         <Button
           text="+"
           textStyle={styles.fabText}
-          onPress={() => {}}
+          onPress={openModal}
           style={styles.fabButton}
         />
       </View>

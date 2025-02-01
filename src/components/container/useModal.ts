@@ -1,11 +1,11 @@
-import { useRouter } from "expo-router";
+import { Href, useRouter } from "expo-router";
 import { useCallback } from "react";
 
-export const useModal = () => {
+export const useModal = (modalPath: Href) => {
   const router = useRouter();
 
   const openModal = useCallback(() => {
-    router.push("/modal");
+    router.push(modalPath);
   }, []);
 
   const closeModal = useCallback(() => {
