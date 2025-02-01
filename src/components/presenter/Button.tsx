@@ -5,9 +5,9 @@ import { useButtonStyles } from "../styles/useButtonStyles";
 interface ButtonProps {
   onPress: (event: GestureResponderEvent) => void;
   text?: string;
+  icon?: React.ReactNode;
   style?: object;
   textStyle?: object;
-  isIcon?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -15,16 +15,16 @@ const Button: React.FC<ButtonProps> = ({
   onPress,
   style,
   textStyle,
-  isIcon = false,
+  icon,
 }) => {
-  const styles = useButtonStyles(isIcon, style);
+  const styles = useButtonStyles(!!icon, style);
   return (
     <TouchableOpacity
       style={[styles.button, style]}
       onPress={onPress}
       activeOpacity={0.7}
     >
-      <Text style={[styles.text, textStyle]}>{text}</Text>
+      {icon ? icon : <Text style={[styles.text, textStyle]}>{text}</Text>}
     </TouchableOpacity>
   );
 };

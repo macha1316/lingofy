@@ -1,4 +1,5 @@
 import Button from "@/src/components/presenter/Button";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import { Tabs } from "expo-router";
 import React from "react";
 
@@ -10,9 +11,8 @@ const Layout = () => {
         // メモ化
         headerLeft: () => (
           <Button
-            text="🍔"
             onPress={() => console.log("ハンバーガー")}
-            isIcon={true}
+            icon={<Ionicons name="menu" size={24} color="black" />}
           />
         ),
       }}
