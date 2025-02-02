@@ -8,7 +8,7 @@ const Layout = () => {
     <Tabs
       screenOptions={{
         headerShown: true,
-        // メモ化
+        // メモ化(components/container/Button.tsx)
         headerLeft: () => (
           <Button
             onPress={() => console.log("ハンバーガー")}

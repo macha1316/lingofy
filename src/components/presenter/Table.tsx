@@ -16,7 +16,11 @@ const data = [
   { id: 3, name: "チャプター 3" },
 ];
 
-const Table = () => {
+interface TableProps {
+  onPress: (id: number) => () => void;
+}
+
+const Table = ({ onPress }: TableProps) => {
   const { open, toggleTable } = useTable();
 
   return (
@@ -39,9 +43,11 @@ const Table = () => {
       {open ? (
         <ScrollView>
           {data.map((item) => (
-            <DataTable.Row key={item.id}>
-              <DataTable.Cell>{item.name}</DataTable.Cell>
-            </DataTable.Row>
+            <TouchableOpacity key={item.id} onPress={onPress(item.id)}>
+              <DataTable.Row>
+                <DataTable.Cell>{item.name}</DataTable.Cell>
+              </DataTable.Row>
+            </TouchableOpacity>
           ))}
         </ScrollView>
       ) : null}

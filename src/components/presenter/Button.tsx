@@ -10,14 +10,9 @@ interface ButtonProps {
   textStyle?: object;
 }
 
-const Button: React.FC<ButtonProps> = ({
-  text,
-  onPress,
-  style,
-  textStyle,
-  icon,
-}) => {
+const Button = ({ text, onPress, style, textStyle, icon }: ButtonProps) => {
   const styles = useButtonStyles(!!icon, style);
+
   return (
     <TouchableOpacity
       style={[styles.button, style]}

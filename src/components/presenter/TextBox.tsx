@@ -1,12 +1,12 @@
 import React from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 
-interface Props {
+interface TextBoxProps {
   placeHolder: string;
   topText?: string;
 }
 
-const TextBox = ({ placeHolder, topText }: Props) => {
+const TextBox = ({ placeHolder, topText }: TextBoxProps) => {
   const [inputText, setText] = React.useState("");
 
   return (

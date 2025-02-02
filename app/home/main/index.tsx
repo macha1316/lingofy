@@ -1,16 +1,27 @@
 import { useModal } from "@/src/components/container/useModal";
 import Button from "@/src/components/presenter/Button";
 import Table from "@/src/components/presenter/Table";
+import useNavigation from "@/src/hooks/useNavigation";
+import { useCallback } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 
 export default function Index() {
   const { openModal } = useModal("/(modal)/createNoteModal");
+  const { pageNavigation } = useNavigation();
+
+  const goToNotePage = useCallback(
+    (id: number) => () => {
+      pageNavigation("/note");
+    },
+    []
+  );
 
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
-        <Table />
-        <Table />
+        {/* のちに可変にする */}
+        <Table onPress={goToNotePage} />
+        <Table onPress={goToNotePage} />
       </ScrollView>
 
       <View style={styles.fabContainer}>
