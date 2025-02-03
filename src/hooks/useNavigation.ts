@@ -10,9 +10,18 @@ export const useNavigation = () => {
     router.push(pagePath);
   }, []);
 
+  const goBack = useCallback(() => {
+    if (router.canGoBack()) {
+      router.back();
+    } else {
+      router.replace("/");
+    }
+  }, []);
+
   return {
     pageReplace,
     pageNavigation,
+    goBack,
   };
 };
 
