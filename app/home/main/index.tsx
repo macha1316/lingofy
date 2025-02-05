@@ -1,20 +1,10 @@
-import { useModal } from "@/src/components/container/useModal";
 import Button from "@/src/components/presenter/Button";
 import Table from "@/src/components/presenter/Table";
-import useNavigation from "@/src/hooks/useNavigation";
-import { useCallback } from "react";
+import useMainPageContainer from "@/src/container/useMainPageContainer";
 import { ScrollView, StyleSheet, View } from "react-native";
 
 export default function Index() {
-  const { openModal } = useModal("/(modal)/createNoteModal");
-  const { pageNavigation } = useNavigation();
-
-  const goToNotePage = useCallback(
-    (id: number) => () => {
-      pageNavigation("/note");
-    },
-    []
-  );
+  const { goToNotePage, openModal } = useMainPageContainer();
 
   return (
     <View style={styles.container}>
