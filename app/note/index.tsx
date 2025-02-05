@@ -18,9 +18,9 @@ export default function Note() {
       start: match.index,
       end: match.index + match[0].length - 1,
       type: match[0].includes("\n") ? "newline" : "word",
-      newLineCount: match[0].length, // 連続する改行の数を記録
+      newLineCount: match[0].length,
       isBeforePunctuation:
-        index < array.length - 1 && /[.,!?;]/.test(array[index + 1][0]), // 次の文字が記号なら true
+        index < array.length - 1 && /[.,!?;]/.test(array[index + 1][0]),
     })
   );
 
