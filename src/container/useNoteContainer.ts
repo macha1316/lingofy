@@ -52,32 +52,40 @@ export default function useNoteContainer({ testData }: NoteContainerProps) {
     ];
   };
 
-  // タッチ位置を調節して最も近い単語を探す
+  // 選択されている単語があればそれを、なければ近い単語を取得
   const getClosestWordIndex = useCallback(
     (x: number, y: number) => {
-      // 端末によって調整値変える必要あるかも(マジックナンバーやめる)
       const adjustedY = y - (insets.top + 55);
       const adjustedX = x - 20;
 
-      const { id: closestIndex } = wordPositions.current.reduce(
-        (closest, word) => {
-          // 単語の中心点を計算
-          const centerX = word.x + word.width / 2;
-          const centerY = word.y + word.height / 2;
+      let closestIndex = null;
+      let minDistance = Infinity;
 
-          // タッチ位置と単語の中心点の距離を計算
-          const distance = Math.sqrt(
-            (centerX - adjustedX) ** 2 + (centerY - adjustedY) ** 2
-          );
+      for (const word of wordPositions.current) {
+        // タップが単語の範囲内にあるか
+        if (
+          adjustedX >= word.x &&
+          adjustedX <= word.x + word.width &&
+          adjustedY >= word.y &&
+          adjustedY <= word.y + word.height
+        ) {
+          return word.id;
+        }
 
-          return distance < closest.distance
-            ? { id: word.id, distance }
-            : closest;
-        },
-        { id: 0, distance: Infinity }
-      );
+        // 範囲内でなかった場
+        const centerX = word.x + word.width / 2;
+        const centerY = word.y + word.height / 2;
+        const distance = Math.sqrt(
+          (centerX - adjustedX) ** 2 + (centerY - adjustedY) ** 2
+        );
 
-      return closestIndex;
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestIndex = word.id;
+        }
+      }
+
+      return closestIndex ?? 0;
     },
     [insets.top]
   );
