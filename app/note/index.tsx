@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   LayoutChangeEvent,
   PanResponder,
@@ -12,8 +12,10 @@ const testData = `
   The sky was an endless stretch of gray, 
   an iron curtain drawn across the heavens,,,cc,, s s,
 
+  No.1
   allowing neither warmth nor light to penetrate the city below.
 
+  No.2
   allowing neither warmth nor light to penetrate the city below.
 `;
 
@@ -48,6 +50,10 @@ export default function Note() {
       { id, x, y, width, height },
     ];
   };
+
+  useEffect(() => {
+    console.log("🟢 useEffect - selectedIndices changed:", selectedIndices);
+  }, [selectedIndices]);
 
   // タッチイベント
   const panResponder = useRef(
