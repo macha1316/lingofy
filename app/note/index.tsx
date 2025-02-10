@@ -19,8 +19,13 @@ export default function Note() {
   return (
     <View style={styles.container} {...panResponder.panHandlers}>
       <View style={styles.textContainer}>
-        {words.map((word, index) =>
-          word.type === "newline" ? (
+        {words.map((word, index) => {
+          const isSelected = selectedIndices.includes(index);
+
+          // text取得時にオブジェクトに入れるように修正する
+          const hasPunctuationAfter = /[.,!?;]/.test(words[index + 1]?.text);
+
+          return word.type === "newline" ? (
             <View
               key={word.id}
               style={{ width: "100%", height: word.newLineCount > 1 ? 16 : 1 }}
@@ -30,15 +35,16 @@ export default function Note() {
               key={word.id}
               style={[
                 styles.mainText,
-                { marginRight: word.isBeforePunctuation ? 0 : 4 },
-                selectedIndices.includes(index) && styles.selectedWord,
+                isSelected && styles.selectedWord,
+                isSelected && !hasPunctuationAfter && styles.textPadding,
+                { marginRight: isSelected || word.isBeforePunctuation ? 0 : 4 },
               ]}
               onLayout={(event) => onWordLayout(event, index)}
             >
               {word.text}
             </Text>
-          )
-        )}
+          );
+        })}
       </View>
     </View>
   );
@@ -60,5 +66,8 @@ const styles = StyleSheet.create({
   },
   selectedWord: {
     backgroundColor: "#ffeb3b",
+  },
+  textPadding: {
+    paddingRight: 4,
   },
 });
