@@ -6,6 +6,7 @@ import {
   PanResponderGestureState,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useModal } from "../components/container/useModal";
 
 type NoteContainerProps = {
   testData: string;
@@ -13,6 +14,7 @@ type NoteContainerProps = {
 
 export default function useNoteContainer({ testData }: NoteContainerProps) {
   const insets = useSafeAreaInsets();
+  const { openModal } = useModal("/(modal)/wordDetailModal");
 
   const wordPositions = useRef<
     { id: number; x: number; y: number; width: number; height: number }[]
@@ -140,6 +142,21 @@ export default function useNoteContainer({ testData }: NoteContainerProps) {
   const handlePanResponderRelease = useCallback(() => {
     startIndexRef.current = null;
     endIndexRef.current = null;
+
+    const selectedWords = selectedIndices
+      .map((index) => {
+        const word = words[index].text;
+        const prevWord = words[index - 1].text;
+
+        if (prevWord === "\n") return word;
+        if (/[.,!?;]/.test(word)) return word;
+
+        return ` ${word}`;
+      })
+      .join("")
+      .trim();
+
+    openModal({ selectedWords });
   }, [selectedIndices]);
 
   const panResponder = useMemo(
