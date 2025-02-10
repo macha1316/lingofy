@@ -9,53 +9,18 @@ const wordDetailModal = () => {
   return (
     <ScrollView style={styles.scrollView} indicatorStyle="black">
       <View style={styles.container}>
-        <View
-          style={{
-            display: "flex",
-            alignItems: "flex-end",
-          }}
-        >
+        <View style={styles.bookmarkContainer}>
           <Fontisto name="bookmark" size={24} color="black" />
         </View>
 
-        <View
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            gap: 10,
-            backgroundColor: "#e9ecef",
-            flexWrap: "wrap",
-            padding: 10,
-            alignItems: "center",
-            borderRadius: 5,
-          }}
-        >
+        <View style={styles.textContainer}>
           <AntDesign name="sound" size={20} color="black" />
-          <Text
-            style={{
-              fontSize: 16,
-              fontWeight: "medium",
-              backgroundColor: "#e9ecef",
-            }}
-          >
-            {selectedWords}
-          </Text>
+          <Text style={styles.text}>{selectedWords}</Text>
         </View>
 
-        <View
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            gap: 10,
-            backgroundColor: "#e9ecef",
-            flexWrap: "wrap",
-            padding: 10,
-            alignItems: "center",
-            borderRadius: 5,
-          }}
-        >
+        <View style={styles.textContainer}>
           <AntDesign name="sound" size={20} color="black" />
-          <Text style={{ fontSize: 16, fontWeight: "medium" }}>
+          <Text style={styles.text}>
             暖かさも光も下にある街に届かなくなります。
             暖かさも光も下にある街に届かなくなります。
             暖かさも光も下にある街に届かなくなります。
@@ -70,22 +35,13 @@ const wordDetailModal = () => {
         </View>
 
         <View>
-          <Text
-            style={{
-              fontSize: 16,
-              fontWeight: "medium",
-              marginBottom: 5,
-              marginTop: 20,
-            }}
-          >
+          <Text style={{ ...styles.text, marginBottom: 5, marginTop: 20 }}>
             メモ
           </Text>
           <TextBox placeHolder="A + Bの形で使う" />
         </View>
         <View>
-          <Text style={{ fontSize: 16, fontWeight: "medium", marginBottom: 5 }}>
-            AIに質問
-          </Text>
+          <Text style={{ ...styles.text, marginBottom: 5 }}>AIに質問</Text>
           <TextBox placeHolder="ex) この単語を使った例文を3つ作成して" />
         </View>
       </View>
@@ -104,6 +60,24 @@ const styles = StyleSheet.create({
     gap: 20,
     backgroundColor: "#f8f9fa",
     paddingBottom: 100,
+  },
+  bookmarkContainer: {
+    display: "flex",
+    alignItems: "flex-end",
+  },
+  textContainer: {
+    display: "flex",
+    flexDirection: "row",
+    gap: 10,
+    backgroundColor: "#e9ecef",
+    flexWrap: "wrap",
+    padding: 10,
+    alignItems: "center",
+    borderRadius: 5,
+  },
+  text: {
+    fontSize: 16,
+    fontWeight: "medium",
   },
 });
 
