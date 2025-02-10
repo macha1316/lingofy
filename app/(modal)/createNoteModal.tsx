@@ -11,6 +11,9 @@ const createNoteModal = () => {
       </Text>
       <TextBox placeHolder="タグ選択" topText="🏷️ タグの選択または作成" />
       <TextBox placeHolder="ノート名" topText="🗒️ 新規ノート名の入力" />
+
+      {/* タブを作ってペースト、webから, ランダム生成 */}
+
       <Button text="作成する" onPress={() => {}} />
     </View>
   );
