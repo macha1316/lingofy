@@ -1,6 +1,10 @@
 import React from "react";
-import { GestureResponderEvent, Text, TouchableOpacity } from "react-native";
-import { useButtonStyles } from "../styles/useButtonStyles";
+import {
+  GestureResponderEvent,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+} from "react-native";
 
 interface ButtonProps {
   onPress: (event: GestureResponderEvent) => void;
@@ -11,17 +15,32 @@ interface ButtonProps {
 }
 
 const Button = ({ text, onPress, style, textStyle, icon }: ButtonProps) => {
-  const styles = useButtonStyles(!!icon, style);
-
   return (
     <TouchableOpacity
       style={[styles.button, style]}
       onPress={onPress}
       activeOpacity={0.7}
     >
-      {icon ? icon : <Text style={[styles.text, textStyle]}>{text}</Text>}
+      {icon}
+      {text && <Text style={[styles.text, textStyle]}>{text}</Text>}
     </TouchableOpacity>
   );
 };
 
 export default Button;
+
+const styles = StyleSheet.create({
+  button: {
+    backgroundColor: "#007BFF",
+    padding: 10,
+    borderRadius: 5,
+    alignItems: "center",
+    flexDirection: "row",
+    gap: 10,
+    justifyContent: "center",
+  },
+  text: {
+    color: "#FFFFFF",
+    fontSize: 16,
+  },
+});

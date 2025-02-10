@@ -12,7 +12,7 @@ export default function useIndexContainer() {
     // requestAnimationFrameを使って、画面遷移を遅延させる(最適でないかも)
     requestAnimationFrame(() => {
       if (!isLoading) {
-        if (isLoggedIn) {
+        if (!isLoggedIn) {
           pageReplace("/home/main");
         } else {
           pageReplace("/auth/login");
