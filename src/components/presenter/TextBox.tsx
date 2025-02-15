@@ -3,12 +3,17 @@ import { StyleSheet, Text, TextInput, View } from "react-native";
 
 interface TextBoxProps {
   placeHolder: string;
+  onChangeText: (text: string) => void;
+  value: string;
   topText?: string;
 }
 
-const TextBox = ({ placeHolder, topText }: TextBoxProps) => {
-  const [inputText, setText] = React.useState("");
-
+const TextBox = ({
+  placeHolder,
+  topText,
+  onChangeText,
+  value,
+}: TextBoxProps) => {
   return (
     <View>
       {topText === undefined ? null : (
@@ -16,10 +21,11 @@ const TextBox = ({ placeHolder, topText }: TextBoxProps) => {
       )}
       <TextInput
         style={styles.textBox}
-        onChangeText={setText}
-        value={inputText}
+        onChangeText={onChangeText}
+        value={value}
         placeholder={placeHolder}
         placeholderTextColor="gray"
+        autoCapitalize="none"
       />
     </View>
   );
