@@ -1,8 +1,8 @@
 import Button from "@/src/components/presenter/Button";
-import TextBox from "@/src/components/presenter/TextBox";
+import TextBoxForm from "@/src/components/presenter/TextBoxForm";
 import { signUp } from "@/src/firebase/auth";
 import AntDesign from "@expo/vector-icons/AntDesign";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { Divider } from "react-native-paper";
 
@@ -29,9 +29,10 @@ export default function Login() {
       <View style={styles.container}>
         <Text>登録</Text>
 
-        <Controller
-          control={control}
+        <TextBoxForm
+          placeHolder="メールアドレス"
           name="email"
+          control={control}
           rules={{
             required: "メールアドレスを入力してください",
             pattern: {
@@ -39,21 +40,12 @@ export default function Login() {
               message: "無効なメールアドレスです",
             },
           }}
-          render={({ field: { onChange, value }, fieldState: { error } }) => (
-            <View>
-              <TextBox
-                placeHolder="メールアドレス"
-                onChangeText={onChange}
-                value={value}
-              />
-              {error && <Text style={{ color: "red" }}>{error.message}</Text>}
-            </View>
-          )}
         />
 
-        <Controller
-          control={control}
+        <TextBoxForm
+          placeHolder="パスワード"
           name="password"
+          control={control}
           rules={{
             required: "パスワードを入力してください",
             minLength: {
@@ -61,13 +53,6 @@ export default function Login() {
               message: "パスワードは6文字以上で入力してください",
             },
           }}
-          render={({ field: { onChange, value } }) => (
-            <TextBox
-              placeHolder="パスワード"
-              onChangeText={onChange}
-              value={value}
-            />
-          )}
         />
 
         <Button
