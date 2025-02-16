@@ -4,7 +4,7 @@ import useMainPageContainer from "@/src/container/useMainPageContainer";
 import { ScrollView, StyleSheet, View } from "react-native";
 
 export default function Index() {
-  const { goToNotePage, openModal } = useMainPageContainer();
+  const { goToNotePage, openModal, ClearStorage } = useMainPageContainer();
 
   return (
     <View style={styles.container}>
@@ -13,6 +13,8 @@ export default function Index() {
         <Table onPress={goToNotePage} />
         <Table onPress={goToNotePage} />
       </ScrollView>
+
+      <Button text="ストレージ初期化(デバッグ)" onPress={ClearStorage} />
 
       <View style={styles.fabContainer}>
         <Button

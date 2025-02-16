@@ -1,6 +1,7 @@
 import Button from "@/src/components/presenter/Button";
 import TextBoxForm from "@/src/components/presenter/TextBoxForm";
 import { signUp } from "@/src/feature/firebase/auth";
+import useNavigation from "@/src/hooks/useNavigation";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { useForm } from "react-hook-form";
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
@@ -12,6 +13,7 @@ type UserForm = {
 };
 
 export default function Login() {
+  const { pageReplace } = useNavigation();
   const { control, handleSubmit } = useForm({
     defaultValues: {
       email: "",
@@ -19,9 +21,11 @@ export default function Login() {
     },
   });
 
-  const onSubmit = (userForm: UserForm) => {
+  const onSubmit = async (userForm: UserForm) => {
     console.log("userForm", userForm);
-    signUp(userForm.email, userForm.password);
+    const userInfo = await signUp(userForm.email, userForm.password);
+    // mainに遷移
+    pageReplace("/home/main");
   };
 
   return (

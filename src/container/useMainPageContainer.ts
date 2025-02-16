@@ -1,5 +1,7 @@
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { useModal } from "../components/container/useModal";
+import { clearStorage } from "../feature/asyncStorage";
+import { auth } from "../feature/firebase/config/firebase";
 import useNavigation from "../hooks/useNavigation";
 
 export default function useMainPageContainer() {
@@ -13,8 +15,20 @@ export default function useMainPageContainer() {
     []
   );
 
+  useEffect(() => {
+    const userInfo = auth.currentUser;
+
+    console.log("userInfo", userInfo);
+  }, []);
+
+  // デバッグ用
+  const ClearStorage = () => {
+    clearStorage();
+  };
+
   return {
     goToNotePage,
     openModal,
+    ClearStorage,
   };
 }
