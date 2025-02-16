@@ -1,6 +1,6 @@
 import Button from "@/src/components/presenter/Button";
 import TextBoxForm from "@/src/components/presenter/TextBoxForm";
-import { signUp } from "@/src/firebase/auth";
+import { signUp } from "@/src/feature/firebase/auth";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { useForm } from "react-hook-form";
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";

@@ -1,6 +1,6 @@
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { auth } from "../firebase/config/firebase";
+import { auth } from "../feature/firebase/config/firebase";
 import useNavigation from "../hooks/useNavigation";
 
 // のちにAPI経由でログイン状態を取得する処理の追加
