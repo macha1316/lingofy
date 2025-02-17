@@ -1,32 +1,12 @@
 import Button from "@/src/components/presenter/Button";
 import TextBoxForm from "@/src/components/presenter/TextBoxForm";
-import { signUp } from "@/src/feature/firebase/auth";
-import useNavigation from "@/src/hooks/useNavigation";
+import useLoginContainer from "@/src/container/auth/useLoginContainer";
 import AntDesign from "@expo/vector-icons/AntDesign";
-import { useForm } from "react-hook-form";
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { Divider } from "react-native-paper";
 
-type UserForm = {
-  email: string;
-  password: string;
-};
-
 export default function Login() {
-  const { pageReplace } = useNavigation();
-  const { control, handleSubmit } = useForm({
-    defaultValues: {
-      email: "",
-      password: "",
-    },
-  });
-
-  const onSubmit = async (userForm: UserForm) => {
-    console.log("userForm", userForm);
-    const userInfo = await signUp(userForm.email, userForm.password);
-    // mainに遷移
-    pageReplace("/home/main");
-  };
+  const { control, handleSubmit, onSubmit } = useLoginContainer();
 
   return (
     <SafeAreaView>
