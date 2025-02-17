@@ -6,7 +6,7 @@ import {
   PanResponderGestureState,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { useModal } from "../components/container/useModal";
+import { useModal } from "../../components/container/useModal";
 
 type NoteContainerProps = {
   testData: string;

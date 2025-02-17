@@ -1,4 +1,4 @@
-import useNoteContainer from "@/src/container/useNoteContainer";
+import useNoteContainer from "@/src/container/note/useNoteContainer";
 import { StyleSheet, Text, View } from "react-native";
 
 const testData = `

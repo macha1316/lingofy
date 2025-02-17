@@ -1,8 +1,8 @@
 import { useCallback, useEffect } from "react";
-import { useModal } from "../components/container/useModal";
-import { clearStorage } from "../feature/asyncStorage";
-import { auth } from "../feature/firebase/config/firebase";
-import useNavigation from "../hooks/useNavigation";
+import { useModal } from "../../../components/container/useModal";
+import { clearStorage } from "../../../feature/asyncStorage";
+import { auth } from "../../../feature/firebase/config/firebase";
+import useNavigation from "../../../hooks/useNavigation";
 
 export default function useMainPageContainer() {
   const { openModal } = useModal("/(modal)/createNoteModal");
