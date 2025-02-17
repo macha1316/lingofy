@@ -3,8 +3,8 @@ import { StyleSheet, Text, TextInput, View } from "react-native";
 
 interface TextBoxProps {
   placeHolder: string;
-  onChangeText: (text: string) => void;
-  value: string;
+  onChangeText?: (text: string) => void;
+  value?: string;
   topText?: string;
 }
 
