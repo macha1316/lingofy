@@ -1,6 +1,6 @@
 import Button from "@/src/components/presenter/Button";
 import Table from "@/src/components/presenter/Table";
-import useMainPageContainer from "@/src/container/useMainPageContainer";
+import useMainPageContainer from "@/src/container/home/main/useMainPageContainer";
 import { ScrollView, StyleSheet, View } from "react-native";
 
 export default function Index() {
